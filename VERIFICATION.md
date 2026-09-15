@@ -44,7 +44,7 @@ RSS 可能临时失效、限流或改变字段；GitHub Actions 的半小时 cro
 |---|---|
 | 本地项目目录 | `/Users/wangzihao/Desktop/面试题` |
 | GitHub 仓库 | 已验证：`https://github.com/xingchenCY/ai-radar`，公开仓库，`main` 分支 |
-| GitHub commit | 已验证：`98b96a6`，定时任务调整为每 30 分钟的 `7,37 * * * *` |
+| GitHub commit | 已验证：`27ee21d`，更新部署验证记录；定时任务配置见 `98b96a6` |
 | GitHub Pages 地址 | 已验证：`https://xingchency.github.io/ai-radar/`，首页 HTTP 200 |
 | `workflow_dispatch` 实际运行记录 | 已验证：运行 `34994172463`，2026-09-16 00:18（北京时间）触发，成功；线上快照 102 条 |
 | 每 30 分钟定时任务实际触发记录 | 未验证：已验证 workflow 配置，尚未等待一个真实半小时 cron 周期 |
