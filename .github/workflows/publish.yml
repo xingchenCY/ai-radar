@@ -2,8 +2,8 @@ name: publish-ai-radar
 
 on:
   schedule:
-    # GitHub cron uses UTC and may start late; idempotent merges make retries safe.
-    - cron: "*/30 * * * *"
+    # Avoid GitHub's top-of-hour load while keeping a 30-minute cadence.
+    - cron: "7,37 * * * *"
   workflow_dispatch:
     inputs:
       bootstrap:
