@@ -198,8 +198,8 @@ if (root) {
     const publisherCount = new Set(snapshot.source_states.filter((source) => ['success', 'empty_feed'].includes(source.status)).map((source) => source.publisher_id || source.source_id)).size;
     nodes.heroArticleCount.textContent = String(snapshot.stats.article_count);
     nodes.heroSourceCount.textContent = String(publisherCount || new Set(snapshot.articles.map((article) => article.publisher_id || article.source_id)).size);
-    nodes.heroDate.textContent = snapshot.last_attempt_at ? formatDate(snapshot.last_attempt_at) : '—';
-    nodes.heroLastUpdate.textContent = snapshot.last_success_at ? `最近成功 ${formatDate(snapshot.last_success_at)}` : '尚无成功记录';
+    nodes.heroDate.textContent = formatDate(lastReadAt);
+    nodes.heroLastUpdate.textContent = snapshot.last_success_at ? `最近采集 ${formatDate(snapshot.last_success_at)}` : '尚无成功记录';
     const statusMap: Record<string, string> = { success: '已更新', no_new: '无新内容', partial_success: '部分更新', degraded: '降级', failed: '失败' };
     nodes.heroStatus.textContent = statusMap[snapshot.overall_status] || '读取中';
     const sources = [...new Map(snapshot.articles.map((article) => [article.source_id, article.source_name])).entries()];
@@ -263,6 +263,7 @@ if (root) {
     if (snapshotLoading) return;
     snapshotLoading = true;
     lastReadAt = new Date().toISOString();
+    renderHero();
     renderStatus();
     try {
       const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
