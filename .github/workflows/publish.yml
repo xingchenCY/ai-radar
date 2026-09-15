@@ -5,8 +5,8 @@ on:
     branches:
       - main
   schedule:
-    # Standard POSIX expression: run every 30 minutes.
-    - cron: "*/30 * * * *"
+    # Run every 30 minutes, offset from the busiest top-of-hour queue.
+    - cron: "7,37 * * * *"
   workflow_dispatch:
     inputs:
       bootstrap:

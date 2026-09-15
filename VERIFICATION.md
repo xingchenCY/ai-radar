@@ -20,7 +20,7 @@
 | 重试按钮 | 人为阻断快照请求后点击重试 | 已验证 | 进入“读取中”，请求完成后恢复成功或显示错误；按钮防重复点击 |
 | 加载更多终止状态 | 浏览器手工操作 | 已验证 | 最后一页按钮保留但禁用并显示“已显示全部资讯” |
 | 主题筛选抽样 | 当前快照统计 + 3 条抽样 | 已验证 | 大模型 37、Agent 4、AI 应用 1、开发工具 8、芯片与算力 8、政策与安全 14、研究 7；抽样与关键词一致 |
-| 每 30 分钟定时配置 | workflow 静态检查 | 已验证 | `.github/workflows/publish.yml` 使用标准表达式 `*/30 * * * *` |
+| 每 30 分钟定时配置 | workflow 静态检查 | 已验证 | `.github/workflows/publish.yml` 使用错峰表达式 `7,37 * * * *` |
 | 主分支更新兜底发布 | GitHub Actions push | 已验证 | 运行 `35000382488` 成功，线上快照推进到北京时间 2026-09-16 01:18 |
 | 手动 GitHub Actions 实际运行 | `workflow_dispatch` | 已验证 | 运行 `34994172463` 成功；真实采集、测试、构建和 Pages 发布完成 |
 | GitHub Pages 可访问 | 浏览器 / HTTP | 已验证 | `https://xingchency.github.io/ai-radar/` 首页 HTTP 200；`data/snapshot.json` HTTP 200 |
