@@ -43,17 +43,21 @@ RSS 可能临时失效、限流或改变字段；GitHub Actions 的半小时 cro
 | 项目 | 当前状态 |
 |---|---|
 | 本地项目目录 | `/Users/wangzihao/Desktop/面试题` |
-| GitHub 仓库 | `https://github.com/xingchenCY/-`，已确认公开且默认分支为 `main`；尚未绑定本地项目 |
-| GitHub commit | 未完成，当前目录尚未初始化 Git 仓库 |
-| GitHub Pages 地址 | 未完成；仓库已有其他项目内容，需先确认 AI Radar 部署目录 |
-| `workflow_dispatch` 实际运行记录 | 未完成，需绑定仓库后执行并记录运行编号、触发时间和结果 |
-| 每 30 分钟定时任务实际触发记录 | 未完成，当前仅验证 workflow 配置 |
+| GitHub 仓库 | 已验证：`https://github.com/xingchenCY/ai-radar`，公开仓库，`main` 分支 |
+| GitHub commit | 已验证：`bfab077`，workflow 修复与 Pages 配置提交 |
+| GitHub Pages 地址 | 已验证：`https://xingchency.github.io/ai-radar/`，首页 HTTP 200 |
+| `workflow_dispatch` 实际运行记录 | 已验证：运行 `34986704274`，2026-09-15 23:11（北京时间）触发，成功 |
+| 每 30 分钟定时任务实际触发记录 | 未验证：已验证 workflow 配置，尚未等待一个真实半小时 cron 周期 |
 
 ### 未验证事项
 
-1. GitHub 账号登录及对 `xingchenCY/-` 的推送权限。
-2. AI Radar 是追加到现有仓库的 `ai-radar/` 子目录，还是使用仓库根目录。
-3. 首次 GitHub Pages 部署是否成功。
-4. 公开 Pages 地址是否可访问，及子路径下 `data/snapshot.json` 是否可读取。
-5. 绑定仓库后的 `workflow_dispatch` 首次运行，包括 `bootstrap=true` 的首次发布链路。
-6. 定时任务在真实 GitHub Actions 环境中的触发、采集、构建和部署结果。
+1. 每 30 分钟 cron 在真实 GitHub Actions 环境中的首次自动触发时间。
+2. 长期运行中外部 RSS 临时失败后的 Pages 保留旧数据行为。
+
+## 真实首次部署记录
+
+- 首次尝试：运行 `34984429518`，失败原因是未勾选 `bootstrap=true`，线上尚无旧快照，工作流按保护逻辑拒绝发布。
+- 第二次尝试：运行 `34984892761`，采集、测试和 Astro 构建成功；因仓库 Pages 尚未启用，`configure-pages` 无法创建 Pages site。
+- 修复：在仓库设置中将 Pages Source 切换为 `GitHub Actions`，并保留 workflow 的 `enablement: true` 兼容配置。
+- 成功运行：运行 `34986704274`，使用提交 `bfab077`，真实采集、pytest、Astro build、artifact 上传和 Pages deploy 全部成功。
+- 线上快照：`https://xingchency.github.io/ai-radar/data/snapshot.json`，HTTP 200，99 条文章，`overall_status=success`，`generated_at=2026-09-15T15:11:13Z`。
