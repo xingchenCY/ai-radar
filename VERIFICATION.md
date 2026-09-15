@@ -21,8 +21,8 @@
 | 加载更多终止状态 | 浏览器手工操作 | 已验证 | 最后一页按钮保留但禁用并显示“已显示全部资讯” |
 | 主题筛选抽样 | 当前快照统计 + 3 条抽样 | 已验证 | 大模型 37、Agent 4、AI 应用 1、开发工具 8、芯片与算力 8、政策与安全 14、研究 7；抽样与关键词一致 |
 | 每 30 分钟定时配置 | workflow 静态检查 | 已验证 | `.github/workflows/publish.yml` 使用 `7,37 * * * *`，避开整点高峰 |
-| 手动 GitHub Actions 实际运行 | `workflow_dispatch` | 未验证 | 需要绑定用户仓库后运行 |
-| GitHub Pages 可访问 | 浏览器 | 未验证 | 当前只有本地 `127.0.0.1`，尚无公开地址 |
+| 手动 GitHub Actions 实际运行 | `workflow_dispatch` | 已验证 | 运行 `34994172463` 成功；真实采集、测试、构建和 Pages 发布完成 |
+| GitHub Pages 可访问 | 浏览器 / HTTP | 已验证 | `https://xingchency.github.io/ai-radar/` 首页 HTTP 200；`data/snapshot.json` HTTP 200 |
 
 ## 构建结果
 
@@ -44,15 +44,15 @@ RSS 可能临时失效、限流或改变字段；GitHub Actions 的半小时 cro
 |---|---|
 | 本地项目目录 | `/Users/wangzihao/Desktop/面试题` |
 | GitHub 仓库 | 已验证：`https://github.com/xingchenCY/ai-radar`，公开仓库，`main` 分支 |
-| GitHub commit | 已验证：`bfab077`，workflow 修复与 Pages 配置提交 |
+| GitHub commit | 已验证：`98b96a6`，定时任务调整为每 30 分钟的 `7,37 * * * *` |
 | GitHub Pages 地址 | 已验证：`https://xingchency.github.io/ai-radar/`，首页 HTTP 200 |
-| `workflow_dispatch` 实际运行记录 | 已验证：运行 `34986704274`，2026-09-15 23:11（北京时间）触发，成功 |
+| `workflow_dispatch` 实际运行记录 | 已验证：运行 `34994172463`，2026-09-16 00:18（北京时间）触发，成功；线上快照 102 条 |
 | 每 30 分钟定时任务实际触发记录 | 未验证：已验证 workflow 配置，尚未等待一个真实半小时 cron 周期 |
 
 ### 未验证事项
 
-1. 每 30 分钟 cron 在真实 GitHub Actions 环境中的首次自动触发时间。
-2. 长期运行中外部 RSS 临时失败后的 Pages 保留旧数据行为。
+1. 每 30 分钟 cron 在真实 GitHub Actions 环境中的首次自动触发时间；当前 GitHub Actions 运行列表尚未出现 `schedule` 事件。
+2. 长期运行中外部 RSS 临时失败后的 Pages 保留旧数据行为；离线故障隔离和保留旧数据测试已通过，尚未在真实源故障时做线上演练。
 
 ## 真实首次部署记录
 
@@ -60,4 +60,4 @@ RSS 可能临时失效、限流或改变字段；GitHub Actions 的半小时 cro
 - 第二次尝试：运行 `34984892761`，采集、测试和 Astro 构建成功；因仓库 Pages 尚未启用，`configure-pages` 无法创建 Pages site。
 - 修复：在仓库设置中将 Pages Source 切换为 `GitHub Actions`，并保留 workflow 的 `enablement: true` 兼容配置。
 - 成功运行：运行 `34986704274`，使用提交 `bfab077`，真实采集、pytest、Astro build、artifact 上传和 Pages deploy 全部成功。
-- 线上快照：`https://xingchency.github.io/ai-radar/data/snapshot.json`，HTTP 200，99 条文章，`overall_status=success`，`generated_at=2026-09-15T15:11:13Z`。
+- 线上快照：`https://xingchency.github.io/ai-radar/data/snapshot.json`，HTTP 200，102 条文章，`overall_status=success`，`generated_at=2026-09-15T16:18:50Z`（北京时间 2026-09-16 00:18:50）。
