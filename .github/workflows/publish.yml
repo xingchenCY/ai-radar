@@ -1,6 +1,9 @@
 name: publish-ai-radar
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     # Standard POSIX expression: run every 30 minutes.
     - cron: "*/30 * * * *"
