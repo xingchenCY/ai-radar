@@ -58,6 +58,7 @@ if (root) {
   let snapshot = bootstrap;
   let snapshotError = false;
   let snapshotLoading = false;
+  let lastReadAt = new Date().toISOString();
   let state: State = readUrl();
   let searchTimer: number | undefined;
 
@@ -251,7 +252,7 @@ if (root) {
     nodes.status.className = `status-strip ${failures.length || snapshotError ? 'is-warning' : ''} ${stale ? 'is-stale' : ''}`;
     nodes.statusLabel.textContent = snapshotLoading ? '正在读取最新数据' : isInitialRead ? '正在读取最新数据' : snapshotError ? '无法读取最新数据' : snapshot.overall_status === 'failed' ? '本次更新失败，已保留旧数据' : stale ? '数据可能已过期' : failures.length ? '部分来源更新失败' : snapshot.overall_status === 'no_new' ? '来源连接正常，暂无新内容' : '数据已更新';
     const sourceNames = failures.map((source) => snapshot.articles.find((article) => article.source_id === source.source_id)?.source_name || source.source_name || source.source_id);
-    nodes.statusDetail.textContent = snapshotLoading ? '正在获取最新快照…' : snapshotError ? '请检查网络后重试；当前页面仍保留可用快照。' : `${snapshot.stats.article_count} 条资讯 · 最近成功 ${lastSuccess}${failures.length ? ` · 失败：${sourceNames.join('、')}` : ''}`;
+    nodes.statusDetail.textContent = snapshotLoading ? '正在获取最新快照…' : snapshotError ? `页面读取 ${formatDate(lastReadAt)} · 请检查网络后重试；当前页面仍保留可用快照。` : `页面读取 ${formatDate(lastReadAt)} · ${snapshot.stats.article_count} 条资讯 · 最近采集 ${lastSuccess}${failures.length ? ` · 失败：${sourceNames.join('、')}` : ''}`;
     nodes.retry.hidden = false;
     nodes.retry.disabled = snapshotLoading;
     nodes.retry.textContent = snapshotLoading ? '读取中…' : snapshotError ? '重试' : '刷新数据';
@@ -261,6 +262,7 @@ if (root) {
   async function loadSnapshot() {
     if (snapshotLoading) return;
     snapshotLoading = true;
+    lastReadAt = new Date().toISOString();
     renderStatus();
     try {
       const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
