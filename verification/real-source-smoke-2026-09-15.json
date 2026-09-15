@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-09-14T16:30:08.843025+00:00",
+  "sources": [
+    {"source_id": "ifanr", "publisher_id": "ifanr", "status": "success", "http_status": 200, "entries": 20, "accepted": 8, "rejected": 12},
+    {"source_id": "tmtpost", "publisher_id": "tmtpost", "status": "success", "http_status": 200, "entries": 17, "accepted": 5, "rejected": 12},
+    {"source_id": "google-ai", "publisher_id": "google", "status": "success", "http_status": 200, "entries": 20, "accepted": 20, "rejected": 0},
+    {"source_id": "openai", "publisher_id": "openai", "status": "success", "http_status": 200, "entries": 1193, "accepted": 1193, "rejected": 0}
+  ],
+  "successful_sources": 4,
+  "meets_minimum": true
+}

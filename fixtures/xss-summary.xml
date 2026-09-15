@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><item><title>Safe rendering test</title><link>https://example.com/news/xss</link><description><![CDATA[<script>alert('xss')</script><p>Visible summary</p>]]></description></item></channel></rss>

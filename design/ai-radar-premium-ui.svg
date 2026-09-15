@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <defs>
+    <style>
+      .bg{fill:#f6f7f5}.surface{fill:#fff}.ink{fill:#101413}.muted{fill:#65706c}.line{stroke:#d9dfdc;stroke-width:1}.accent{fill:#315bff}.soft{fill:#eef2ff}.mono{font-family:SFMono-Regular,Menlo,Consolas,monospace}.sans{font-family:Helvetica Neue,PingFang SC,Avenir Next,Arial,sans-serif}.h1{font-size:72px;font-weight:760;letter-spacing:0}.h2{font-size:30px;font-weight:760}.h3{font-size:24px;font-weight:720}.body{font-size:15px}.small{font-size:12px}.tiny{font-size:10px}.shadow{filter:url(#shadow)}
+    </style>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#315bff" flood-opacity=".10"/>
+    </filter>
+  </defs>
+  <rect class="bg" width="1440" height="1024"/>
+  <g transform="translate(60,0)">
+    <line class="line" x1="0" y1="68" x2="1320" y2="68"/>
+    <rect class="accent" x="0" y="20" width="32" height="32" rx="8"/>
+    <text class="sans" x="8" y="41" fill="#fff" font-size="12" font-weight="800">AI</text>
+    <text class="sans ink" x="44" y="42" font-size="20" font-weight="760">Radar</text>
+    <line class="line" x1="120" y1="22" x2="120" y2="48"/>
+    <text class="sans muted small" x="136" y="42">每日 AI 情报站</text>
+    <circle class="accent" cx="1092" cy="34" r="4"/>
+    <text class="mono ink tiny" x="1108" y="38" font-weight="700">LIVE SIGNALS</text>
+    <text class="sans muted small" x="1220" y="38">北京时间 UTC+8</text>
+  </g>
+  <g transform="translate(60,112)">
+    <text class="mono accent tiny" x="0" y="0" font-weight="700" letter-spacing="2">AI SIGNAL DESK</text>
+    <text class="sans h1 ink" x="0" y="78">每天 3 分钟，</text>
+    <text class="sans h1 ink" x="0" y="154">读懂 AI 今日信号。</text>
+    <text class="sans body muted" x="0" y="206">公开 RSS 聚合，来源可追溯。发布时间与采集时间分离，所有时间按北京时间展示。</text>
+    <line x1="0" y1="250" x2="86" y2="250" stroke="#315bff" stroke-width="2"/>
+    <text class="mono muted tiny" x="104" y="254" letter-spacing="1">OPEN RSS / TRACEABLE SOURCES</text>
+  </g>
+  <g transform="translate(930,110)" class="shadow">
+    <rect class="soft" width="390" height="270" rx="16"/>
+    <line x1="24" y1="58" x2="366" y2="58" stroke="#cdd8ff"/>
+    <text class="sans ink body" x="24" y="36" font-weight="760">今日数据快照</text>
+    <text class="mono muted tiny" x="270" y="36">09月15日 13:52</text>
+    <text class="sans muted small" x="24" y="96">当前资讯</text>
+    <text class="sans ink" x="24" y="150" font-size="54" font-weight="760">96</text>
+    <text class="sans muted small" x="170" y="96">独立来源</text>
+    <text class="sans ink" x="170" y="143" font-size="38" font-weight="720">4</text>
+    <text class="sans muted small" x="280" y="96">数据状态</text>
+    <text class="sans accent" x="280" y="140" font-size="24" font-weight="760">已更新</text>
+    <line x1="24" y1="182" x2="366" y2="182" stroke="#cdd8ff"/>
+    <rect x="24" y="205" width="74" height="28" rx="14" fill="#fff" opacity=".72"/>
+    <rect x="108" y="205" width="82" height="28" rx="14" fill="#fff" opacity=".72"/>
+    <rect x="200" y="205" width="86" height="28" rx="14" fill="#fff" opacity=".72"/>
+    <rect x="296" y="205" width="70" height="28" rx="14" fill="#fff" opacity=".72"/>
+    <text class="mono muted tiny" x="43" y="223">IFANR</text>
+    <text class="mono muted tiny" x="128" y="223">TMPOST</text>
+    <text class="mono muted tiny" x="222" y="223">GOOGLE</text>
+    <text class="mono muted tiny" x="314" y="223">OPENAI</text>
+  </g>
+  <line class="line" x1="60" y1="430" x2="1380" y2="430"/>
+  <g transform="translate(60,465)">
+    <text class="sans h2 ink" x="0" y="0">今天值得先看</text>
+    <text class="sans muted small" x="1190" y="0">最多 3 条精选</text>
+    <line x1="0" y1="22" x2="1320" y2="22" stroke="#101413"/>
+    <g transform="translate(0,46)" class="shadow">
+      <rect class="soft" width="835" height="282" rx="16"/>
+      <text class="mono accent tiny" x="28" y="40" font-weight="700">01</text>
+      <text class="mono muted tiny" x="28" y="76">OpenAI News / English / 09月15日 10:24</text>
+      <text class="sans ink" x="28" y="128" font-size="38" font-weight="760">OpenAI 发布新的开发者工具链</text>
+      <text class="sans muted body" x="28" y="170">面向真实工作流的模型、工具调用和评测能力进一步整合，开发者可以更快验证产品原型。</text>
+      <rect class="accent" x="28" y="216" width="104" height="38" rx="10"/>
+      <text class="sans" x="48" y="240" fill="#fff" font-size="13" font-weight="760">查看原文</text>
+    </g>
+    <g transform="translate(870,46)">
+      <rect class="surface" width="450" height="132" rx="0"/>
+      <line class="line" x1="0" y1="0" x2="450" y2="0"/>
+      <text class="mono muted tiny" x="0" y="30">02 / Google AI / English</text>
+      <text class="sans ink h3" x="0" y="68">Gemini 更新面向企业的多模态能力</text>
+      <text class="sans muted small" x="0" y="98">模型能力、部署方式和安全控制是主要看点。</text>
+      <line class="line" x1="0" y1="132" x2="450" y2="132"/>
+      <g transform="translate(0,150)">
+        <text class="mono muted tiny" x="0" y="30">03 / 爱范儿 / 中文</text>
+        <text class="sans ink h3" x="0" y="68">国产大模型应用进入密集发布期</text>
+        <text class="sans muted small" x="0" y="98">产品化节奏比参数竞争更值得关注。</text>
+        <line class="line" x1="0" y1="132" x2="450" y2="132"/>
+      </g>
+    </g>
+  </g>
+  <g transform="translate(60,840)">
+    <rect class="surface" x="0" y="0" width="1320" height="74" rx="14"/>
+    <text class="sans muted tiny" x="22" y="24" font-weight="760">搜索</text>
+    <rect x="22" y="32" width="370" height="30" rx="10" fill="#f6f7f5" stroke="#d9dfdc"/>
+    <text class="sans muted small" x="38" y="52">标题、摘要或来源</text>
+    <text class="sans muted tiny" x="425" y="24" font-weight="760">时间</text>
+    <rect class="accent" x="425" y="32" width="54" height="30" rx="15"/>
+    <text class="sans" x="441" y="52" fill="#fff" font-size="12" font-weight="760">全部</text>
+    <rect x="486" y="32" width="54" height="30" rx="15" fill="#fff" stroke="#d9dfdc"/>
+    <text class="sans muted small" x="501" y="52">今天</text>
+    <rect x="548" y="32" width="48" height="30" rx="15" fill="#fff" stroke="#d9dfdc"/>
+    <text class="sans muted small" x="563" y="52">7天</text>
+    <text class="sans muted tiny" x="632" y="24" font-weight="760">来源</text>
+    <rect x="632" y="32" width="78" height="30" rx="15" fill="#fff" stroke="#d9dfdc"/>
+    <text class="sans muted small" x="648" y="52">爱范儿</text>
+    <rect x="718" y="32" width="86" height="30" rx="15" fill="#fff" stroke="#d9dfdc"/>
+    <text class="sans muted small" x="734" y="52">钛媒体</text>
+    <rect x="812" y="32" width="88" height="30" rx="15" fill="#fff" stroke="#d9dfdc"/>
+    <text class="sans muted small" x="828" y="52">OpenAI</text>
+    <text class="sans muted tiny" x="948" y="24" font-weight="760">主题</text>
+    <rect x="948" y="32" width="74" height="30" rx="15" fill="#fff" stroke="#d9dfdc"/>
+    <text class="sans muted small" x="964" y="52">大模型</text>
+    <rect x="1030" y="32" width="66" height="30" rx="15" fill="#fff" stroke="#d9dfdc"/>
+    <text class="sans muted small" x="1048" y="52">Agent</text>
+    <text class="sans accent small" x="1238" y="51" font-weight="760">清除全部</text>
+  </g>
+  <g transform="translate(60,958)">
+    <text class="sans h2 ink" x="0" y="0">全部资讯</text>
+    <text class="sans muted small" x="1180" y="0">96 条结果</text>
+    <line x1="0" y1="22" x2="1320" y2="22" stroke="#101413"/>
+    <text class="mono muted tiny" x="0" y="58">01</text>
+    <text class="mono muted tiny" x="68" y="45">钛媒体 / 中文 / 09月15日 12:06</text>
+    <text class="sans ink" x="68" y="78" font-size="20" font-weight="720">AI 应用创业进入新一轮产品验证期</text>
+    <text class="sans accent small" x="1245" y="66" font-weight="760">查看原文</text>
+  </g>
+</svg>

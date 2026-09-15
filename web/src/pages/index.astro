@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NewsApp from '../components/NewsApp.astro';
+import snapshot from '../data/snapshot';
+---
+
+<Layout title="AI Radar · 每日 AI 情报站">
+  <NewsApp initialSnapshot={snapshot} />
+</Layout>

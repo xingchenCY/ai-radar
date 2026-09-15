@@ -1,0 +1,93 @@
+---
+import '../styles/global.css';
+const { initialSnapshot } = Astro.props;
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+---
+<main class="site-shell" data-app data-snapshot={JSON.stringify(initialSnapshot)}>
+  <header class="masthead">
+    <a class="brand" href={base} aria-label="AI Radar 首页">
+      <span class="brand-mark">AI</span>
+      <span class="brand-name">Radar</span>
+      <span class="brand-caption">每日 AI 情报站</span>
+    </a>
+    <div class="masthead-meta">
+      <span class="meta-live"><i></i>实时更新</span>
+      <span class="timezone-note">北京  /  UTC+8</span>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="page-title">
+    <div class="hero-copy">
+      <p class="kicker">AI Radar · 每日简报</p>
+      <h1 id="page-title">每天 3 分钟，筛出真正重要的 AI 信号。</h1>
+      <p class="hero-copy-text">把公开 RSS 中真正值得读的 AI 动态，整理成一页轻量简报。</p>
+      <div class="hero-note"><span class="hero-note-line"></span><span>公开来源 · 原文可追溯</span></div>
+    </div>
+    <div class="snapshot-panel" aria-label="今日数据快照">
+      <div class="snapshot-eyebrow"><span>今日简报</span><span>同步状态</span></div>
+      <div class="snapshot-head"><span>数据概览</span><span class="snapshot-date" data-hero-date>更新中</span></div>
+      <div class="snapshot-grid">
+        <div class="snapshot-metric snapshot-metric-large"><span>当前资讯</span><strong data-hero-article-count>—</strong><small>近 30 天</small></div>
+        <div class="snapshot-metric"><span>独立来源</span><strong data-hero-source-count>—</strong><small>publisher</small></div>
+        <div class="snapshot-metric"><span>数据状态</span><strong class="snapshot-status" data-hero-status>读取中</strong><small data-hero-last-update>最近成功 —</small></div>
+      </div>
+      <div class="snapshot-sources" data-hero-sources></div>
+      <div class="snapshot-foot"><span>持续同步公开来源</span><span class="snapshot-bars"><i></i><i></i><i></i><i></i><i></i></span></div>
+    </div>
+  </section>
+
+  <section class="signal-ribbon" aria-label="情报站工作状态">
+    <div class="signal-ribbon-item"><div><strong>公开 RSS</strong><small>来源可追溯</small></div></div>
+    <div class="signal-ribbon-item"><div><strong>北京时间</strong><small>发布时间统一</small></div></div>
+    <div class="signal-ribbon-item"><div><strong>编辑优先</strong><small>先看重要信号</small></div></div>
+  </section>
+
+  <section class="status-strip" data-status aria-live="polite">
+    <span class="status-dot"></span>
+    <strong data-status-label>正在读取最新数据</strong>
+    <span class="status-detail" data-status-detail>数据加载中</span>
+    <button class="status-retry" data-retry type="button" hidden>重试</button>
+  </section>
+
+  <section class="focus-section" aria-labelledby="focus-title">
+    <div class="section-heading">
+      <div><p class="section-kicker">精选动态</p><h2 id="focus-title">今天值得先看</h2></div>
+      <span class="section-rule-label">最多 3 条</span>
+    </div>
+    <div class="focus-grid" data-focus></div>
+  </section>
+
+  <section class="signals-section" aria-labelledby="signals-title">
+    <div class="filter-toolbar" aria-label="资讯筛选">
+      <label class="search-field">
+        <span>搜索</span>
+        <input data-search type="search" autocomplete="off" placeholder="标题、摘要或来源" />
+      </label>
+      <div class="filter-group"><span class="field-label">时间</span><div class="segmented" data-range-group>
+        <button type="button" data-range="all" class="is-active">全部</button><button type="button" data-range="today">今天</button><button type="button" data-range="7d">7 天</button><button type="button" data-range="unknown">未知</button>
+      </div></div>
+      <div class="filter-group filter-group-scroll"><span class="field-label">来源</span><div class="source-list" data-sources></div></div>
+      <div class="filter-group filter-group-scroll"><span class="field-label">语言</span><div class="source-list" data-languages>
+        <button type="button" data-language="zh" class="filter-chip">中文</button><button type="button" data-language="en" class="filter-chip">English</button>
+      </div></div>
+      <div class="filter-group filter-group-topic"><span class="field-label">主题</span><div class="topic-list" data-topics></div></div>
+      <button class="text-button clear-button" data-clear type="button">清除全部</button>
+    </div>
+
+    <div class="section-heading results-heading"><div><p class="section-kicker">资讯列表</p><h2 id="signals-title">全部资讯</h2></div><div class="results-summary"><span data-active-filters>全部来源 · 最近更新优先</span><strong data-count></strong></div></div>
+    <div class="news-list" data-list></div>
+    <div class="empty-state" data-empty hidden>
+      <div class="empty-index">0</div><h3>没有找到符合条件的内容</h3><p>试试更短的关键词，或清除当前筛选条件。</p><button class="primary-button" data-empty-clear type="button">清除筛选</button>
+    </div>
+    <button class="load-more" data-load-more type="button" hidden>显示更多资讯 <span>↓</span></button>
+  </section>
+
+  <footer class="site-footer">
+    <span>AI Radar / Open RSS signal desk</span>
+    <span data-version>数据版本：bootstrap</span>
+  </footer>
+</main>
+<script define:vars={{ initialSnapshot }}>
+  window.__AI_RADAR_BOOTSTRAP__ = initialSnapshot;
+</script>
+<script src="../scripts/app.ts"></script>

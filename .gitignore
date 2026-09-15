@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+.venv/
+data/snapshot.json
+web/node_modules/
+web/dist/
+web/.astro/
+.DS_Store
+.playwright-cli/
+output/

@@ -1,0 +1,73 @@
+{
+  "checked_at": "2026-09-14T16:21:16.283736+00:00",
+  "sources": [
+    {
+      "source_id": "ifanr",
+      "name": "爱范儿",
+      "url": "https://www.ifanr.com/feed",
+      "status": "success",
+      "publisher_id": "ifanr",
+      "attempts": 1,
+      "http_status": 200,
+      "content_type": "application/rss+xml; charset=UTF-8",
+      "entry_count": 20,
+      "accepted_count": 0,
+      "rejected_count": 0,
+      "error": null,
+      "final_url": "https://www.ifanr.com/feed",
+      "duration_ms": 499,
+      "rejected_samples": []
+    },
+    {
+      "source_id": "tmtpost",
+      "name": "钛媒体",
+      "url": "https://www.tmtpost.com/rss",
+      "status": "success",
+      "publisher_id": "tmtpost",
+      "attempts": 1,
+      "http_status": 200,
+      "content_type": "text/xml;charset=UTF-8",
+      "entry_count": 17,
+      "accepted_count": 0,
+      "rejected_count": 0,
+      "error": null,
+      "final_url": "https://www.tmtpost.com/rss",
+      "duration_ms": 1024,
+      "rejected_samples": []
+    },
+    {
+      "source_id": "google-ai",
+      "name": "Google AI",
+      "url": "https://blog.google/technology/ai/rss/",
+      "status": "success",
+      "publisher_id": "google",
+      "attempts": 1,
+      "http_status": 200,
+      "content_type": "application/xml; charset=utf-8",
+      "entry_count": 20,
+      "accepted_count": 0,
+      "rejected_count": 0,
+      "error": null,
+      "final_url": "https://blog.google/innovation-and-ai/technology/ai/rss/",
+      "duration_ms": 81223,
+      "rejected_samples": []
+    },
+    {
+      "source_id": "openai",
+      "name": "OpenAI News",
+      "url": "https://openai.com/news/rss.xml",
+      "status": "success",
+      "publisher_id": "openai",
+      "attempts": 1,
+      "http_status": 200,
+      "content_type": "text/xml; charset=utf-8",
+      "entry_count": 1193,
+      "accepted_count": 0,
+      "rejected_count": 0,
+      "error": null,
+      "final_url": "https://openai.com/news/rss.xml",
+      "duration_ms": 1047,
+      "rejected_samples": []
+    }
+  ]
+}

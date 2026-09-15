@@ -1,0 +1,46 @@
+sources:
+  - id: ifanr
+    publisher_id: ifanr
+    name: 爱范儿
+    language: zh
+    feed_url: https://www.ifanr.com/feed
+    mode: broad
+    enabled: true
+    default_timezone: Asia/Shanghai
+    allowed_hosts: [www.ifanr.com, ifanr.com]
+  - id: tmtpost
+    publisher_id: tmtpost
+    name: 钛媒体
+    language: zh
+    feed_url: https://www.tmtpost.com/rss
+    mode: broad
+    enabled: true
+    default_timezone: Asia/Shanghai
+    allowed_hosts: [www.tmtpost.com, tmtpost.com]
+  - id: google-ai
+    publisher_id: google
+    name: Google AI
+    language: en
+    feed_url: https://blog.google/technology/ai/rss/
+    mode: ai_feed
+    enabled: true
+    default_timezone: America/Los_Angeles
+    allowed_hosts: [blog.google, www.blog.google]
+  - id: openai
+    publisher_id: openai
+    name: OpenAI News
+    language: en
+    feed_url: https://openai.com/news/rss.xml
+    mode: ai_feed
+    enabled: true
+    default_timezone: UTC
+    allowed_hosts: [openai.com, www.openai.com]
+
+topic_queries:
+  大模型: [llm, large language model, foundation model, 大模型, 语言模型, gpt, claude, gemini, deepseek]
+  Agent: [agent, agentic, copilot, 智能体]
+  AI 应用: [ai app, ai product, assistant, 应用, 助手]
+  开发工具: [developer tool, sdk, api, coding, 开发工具, 编程]
+  芯片与算力: [gpu, chip, inference, training, datacenter, 芯片, 算力]
+  政策与安全: [policy, safety, regulation, security, 政策, 安全]
+  研究: [research, paper, study, 论文, 研究]
