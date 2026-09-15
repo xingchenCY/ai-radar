@@ -105,4 +105,8 @@ python -m collector.smoke_test --real
 
 默认不需要付费 API。公开仓库使用 GitHub Actions 和 GitHub Pages 的免费能力；实际额度和来源条款以平台当前规则为准。
 
+## 在线演示
+
+部署完成后访问：[AI Radar 在线站点](https://xingchenCY.github.io/ai-radar/)
+
 更多决策、验证结果和未完成事项见 `DEVELOPMENT.md`、`VERIFICATION.md`。
