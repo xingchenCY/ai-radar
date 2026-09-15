@@ -8,3 +8,4 @@ web/.astro/
 .DS_Store
 .playwright-cli/
 output/
+.deploy-key/
