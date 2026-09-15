@@ -264,7 +264,7 @@ if (root) {
     renderStatus();
     try {
       const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-      const response = await fetch(`${base}data/snapshot.json?ts=${Date.now()}`);
+      const response = await fetch(`${base}data/snapshot.json?ts=${Date.now()}`, { cache: 'no-store' });
       if (!response.ok) throw new Error('snapshot unavailable');
       snapshot = await response.json() as Snapshot;
       snapshotError = false;
@@ -280,5 +280,7 @@ if (root) {
   nodes.more.addEventListener('click', () => { state.visible += 20; render(); });
   nodes.retry.addEventListener('click', () => { if (!snapshotLoading) { snapshotError = false; loadSnapshot(); } });
   window.addEventListener('popstate', () => { state = readUrl(); render(); });
+  window.setInterval(() => { if (document.visibilityState === 'visible') loadSnapshot(); }, 5 * 60 * 1000);
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') loadSnapshot(); });
   renderStatus(); render(); loadSnapshot();
 }
