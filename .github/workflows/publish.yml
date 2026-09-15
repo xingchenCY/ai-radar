@@ -2,8 +2,8 @@ name: publish-ai-radar
 
 on:
   schedule:
-    # Avoid GitHub's top-of-hour load while keeping a 30-minute cadence.
-    - cron: "7,37 * * * *"
+    # Standard POSIX expression: run every 30 minutes.
+    - cron: "*/30 * * * *"
   workflow_dispatch:
     inputs:
       bootstrap:
