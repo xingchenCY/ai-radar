@@ -23,7 +23,7 @@
 | 主题筛选抽样 | 当前快照统计 + 3 条抽样 | 已验证 | 大模型 37、Agent 4、AI 应用 1、开发工具 8、芯片与算力 8、政策与安全 14、研究 7；抽样与关键词一致 |
 | 每 30 分钟定时配置 | workflow 静态检查 | 已验证 | `.github/workflows/publish.yml` 使用 `7,37` 主时间点和 `22,52` 后备检查；25 分钟 guard 防止重复发布 |
 | 定时任务真实触发 | GitHub Actions `schedule` | 已验证 | 运行 `35027193775`、`35038770584` 均成功，分别于北京时间 05:43、08:09 完成真实采集和 Pages 发布 |
-| 主分支更新兜底发布 | GitHub Actions push | 已验证 | 运行 `35049497379` 成功，线上快照推进到北京时间 2026-09-16 10:50 |
+| 主分支更新兜底发布 | GitHub Actions push | 已验证 | 运行 `35052426626` 成功，线上快照推进到北京时间 2026-09-16 11:36 |
 | 手动 GitHub Actions 实际运行 | `workflow_dispatch` | 已验证 | 运行 `34994172463` 成功；真实采集、测试、构建和 Pages 发布完成 |
 | GitHub Pages 可访问 | 浏览器 / HTTP | 已验证 | `https://xingchency.github.io/ai-radar/` 首页 HTTP 200；`data/snapshot.json` HTTP 200 |
 
@@ -47,7 +47,7 @@ RSS 可能临时失效、限流或改变字段；GitHub Actions 的半小时 cro
 |---|---|
 | 本地项目目录 | `/Users/wangzihao/Desktop/面试题` |
 | GitHub 仓库 | 已验证：`https://github.com/xingchenCY/ai-radar`，公开仓库，`main` 分支 |
-| GitHub commit | 已验证：`c993def`，增加错峰定时检查和 25 分钟 guard；页面读取时间见 `7832516` |
+| GitHub commit | 已验证：`425859e`，交付材料和错峰定时检查已提交；页面读取时间见 `7832516` |
 | GitHub Pages 地址 | 已验证：`https://xingchency.github.io/ai-radar/`，首页 HTTP 200 |
 | `workflow_dispatch` 实际运行记录 | 已验证：运行 `34994172463`，2026-09-16 00:18（北京时间）触发，成功；线上快照 102 条 |
 | 每 30 分钟严格准点触发 | 未验证：GitHub Actions 已有成功 `schedule` 运行，但平台可能延迟或漏调度，不能承诺严格每 30 分钟准点 |
@@ -63,4 +63,4 @@ RSS 可能临时失效、限流或改变字段；GitHub Actions 的半小时 cro
 - 第二次尝试：运行 `34984892761`，采集、测试和 Astro 构建成功；因仓库 Pages 尚未启用，`configure-pages` 无法创建 Pages site。
 - 修复：在仓库设置中将 Pages Source 切换为 `GitHub Actions`，并保留 workflow 的 `enablement: true` 兼容配置。
 - 成功运行：运行 `34986704274`，使用提交 `bfab077`，真实采集、pytest、Astro build、artifact 上传和 Pages deploy 全部成功。
-- 线上快照：`https://xingchency.github.io/ai-radar/data/snapshot.json`，HTTP 200，109 条文章，`overall_status=success`，`generated_at=2026-09-16T02:50:13Z`（北京时间 2026-09-16 10:50:13）。
+- 线上快照：`https://xingchency.github.io/ai-radar/data/snapshot.json`，HTTP 200，108 条文章，`overall_status=success`，`generated_at=2026-09-16T03:36:27Z`（北京时间 2026-09-16 11:36:27）。
