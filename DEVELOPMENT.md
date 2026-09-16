@@ -17,9 +17,11 @@
 1. 使用“当前已部署页面中的 snapshot.json”作为运行状态，而不是把每日数据提交到 Git、数据分支、SQLite 或 GitHub Release。这样代码仓库保持干净，构建失败时旧页面仍然可用，下次任务可以从线上旧快照继续增量合并。
 2. 只做确定性的 URL、guid 和同来源标题指纹去重，不做跨媒体语义聚合。题目要求固定输入重复导入幂等，不要求判断不同报道是否是同一事件；在短时间内优先保证可解释和可验证。
 
-## 主要开源技术
+## 主要开发工具和开源技术
 
-Astro、feedparser、python-dateutil、pytest、GitHub Actions、GitHub Pages。
+主要使用 Codex 完成代码实现、边界审查、测试运行和部署排查；关键改动均在本地构建、pytest 和 GitHub Actions 中复核。未使用外部 UI 模板、外部字体或付费 API。
+
+项目使用的开源技术包括 Astro、feedparser、python-dateutil、pytest、GitHub Actions 和 GitHub Pages。
 
 ## 问题定位记录
 
