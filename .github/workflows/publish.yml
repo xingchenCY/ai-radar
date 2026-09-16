@@ -5,8 +5,9 @@ on:
     branches:
       - main
   schedule:
-    # Run every 30 minutes, offset from the busiest top-of-hour queue.
+    # Keep the 30-minute cadence and add offset checks so a missed slot can recover sooner.
     - cron: "7,37 * * * *"
+    - cron: "22,52 * * * *"
   workflow_dispatch:
     inputs:
       bootstrap:
@@ -80,10 +81,37 @@ jobs:
             echo "Unable to read deployed snapshot; refusing to publish a replacement." >&2
             exit 1
           fi
+      - name: Guard scheduled cadence
+        id: cadence
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "due=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          data = json.loads(Path('data/previous.json').read_text())
+          value = data.get('last_success_at')
+          if not value:
+              print('due=true')
+              raise SystemExit
+          collected = datetime.fromisoformat(value.replace('Z', '+00:00'))
+          age_minutes = (datetime.now(timezone.utc) - collected).total_seconds() / 60
+          due = age_minutes >= 25
+          print(f'due={str(due).lower()}')
+          print(f'last_success_age_minutes={age_minutes:.1f}')
+          if not due:
+              print('Scheduled check is inside the 25-minute guard window; skipping duplicate publish.')
+          PY
       - name: Collect, merge and validate
+        if: steps.cadence.outputs.due == 'true'
         run: python -m collector.update --output web/public/data/snapshot.json --previous data/previous.json
       - name: Refuse an empty first deployment
-        if: steps.previous.outputs.available == 'false'
+        if: steps.cadence.outputs.due == 'true' && steps.previous.outputs.available == 'false'
         shell: bash
         run: |
           python - <<'PY'
@@ -94,8 +122,10 @@ jobs:
               raise SystemExit('all sources failed during first deployment; refusing to publish bootstrap-only data')
           PY
       - name: Run collector tests
+        if: steps.cadence.outputs.due == 'true'
         run: python -m pytest -q
       - name: Validate generated snapshot
+        if: steps.cadence.outputs.due == 'true'
         run: |
           python - <<'PY'
           import hashlib, json
@@ -109,25 +139,30 @@ jobs:
           print(f"snapshot articles={len(data['articles'])} sha256={digest}")
           PY
       - name: Set up Node
+        if: steps.cadence.outputs.due == 'true'
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: npm
           cache-dependency-path: web/package-lock.json
       - name: Build Astro site
+        if: steps.cadence.outputs.due == 'true'
         working-directory: web
         env:
           BASE_PATH: ${{ steps.pages-url.outputs.base }}
           SITE_URL: ${{ steps.pages-url.outputs.url }}
         run: npm ci && npm run build
       - name: Configure Pages
+        if: steps.cadence.outputs.due == 'true'
         uses: actions/configure-pages@v5
         with:
           enablement: true
       - name: Upload Pages artifact
+        if: steps.cadence.outputs.due == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: web/dist
       - name: Deploy to Pages
+        if: steps.cadence.outputs.due == 'true'
         id: deployment
         uses: actions/deploy-pages@v4

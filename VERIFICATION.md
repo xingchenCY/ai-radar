@@ -21,7 +21,7 @@
 | 页面自动刷新线上快照 | 浏览器保持页面打开并检查定时读取逻辑 | 已验证 | 每 5 分钟读取一次；从后台恢复可立即读取；请求使用 `cache: no-store` |
 | 加载更多终止状态 | 浏览器手工操作 | 已验证 | 最后一页按钮保留但禁用并显示“已显示全部资讯” |
 | 主题筛选抽样 | 当前快照统计 + 3 条抽样 | 已验证 | 大模型 37、Agent 4、AI 应用 1、开发工具 8、芯片与算力 8、政策与安全 14、研究 7；抽样与关键词一致 |
-| 每 30 分钟定时配置 | workflow 静态检查 | 已验证 | `.github/workflows/publish.yml` 使用错峰表达式 `7,37 * * * *` |
+| 每 30 分钟定时配置 | workflow 静态检查 | 已验证 | `.github/workflows/publish.yml` 使用 `7,37` 主时间点和 `22,52` 后备检查；25 分钟 guard 防止重复发布 |
 | 主分支更新兜底发布 | GitHub Actions push | 已验证 | 运行 `35008317458` 成功，线上快照推进到北京时间 2026-09-16 02:34 |
 | 手动 GitHub Actions 实际运行 | `workflow_dispatch` | 已验证 | 运行 `34994172463` 成功；真实采集、测试、构建和 Pages 发布完成 |
 | GitHub Pages 可访问 | 浏览器 / HTTP | 已验证 | `https://xingchency.github.io/ai-radar/` 首页 HTTP 200；`data/snapshot.json` HTTP 200 |

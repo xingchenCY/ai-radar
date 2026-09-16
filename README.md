@@ -81,7 +81,7 @@ python -m collector.smoke_test --real
 - GitHub Actions：Actions → `publish-ai-radar` → Run workflow。
 - 首次部署：在手动运行表单中将 `bootstrap` 设为 `true`；首次成功发布后，后续定时任务只读取线上快照，读取失败会停止发布而不会回退覆盖旧页面。
 - 如果使用自定义 Pages 域名，可在仓库 Variables 中设置 `PAGES_BASE_URL`；如果站点部署在非根路径，再设置对应的 `PAGES_BASE_PATH`（例如 `/ai-radar`）。
-- 定时：每 30 分钟触发一次（GitHub Actions 使用 UTC，表达式为 `7,37 * * * *`，刻意错开整点高峰）。实际启动可能延迟，不保证精确到分钟；并发运行由 workflow 锁串行处理。
+- 定时：目标每 30 分钟发布一次（GitHub Actions 使用 UTC，主时间点为 `7,37 * * * *`，另有 `22,52 * * * *` 错峰检查）。后备检查只在上次成功采集超过 25 分钟时发布，避免重复更新；实际启动可能延迟，不保证精确到分钟。
 - 兜底发布：`main` 分支更新也会触发发布，避免工作流调整后必须等待下一次定时窗口。
 - 页面刷新：页面上的“刷新数据”会立即重新读取最新已发布快照，并把“同步状态”更新为本次页面读取时间；文章内容只有在 GitHub Actions 采集并发布后才会变化。它不会在浏览器中直接启动 RSS 采集，需要立即采集时请在 GitHub Actions 中手动运行 `publish-ai-radar`。
 - GitHub Pages 工作流从当前已部署的 `data/snapshot.json` 读取旧状态，合并新 RSS 后重新构建；运行数据不提交 Git，不使用数据库或 Release Asset。
