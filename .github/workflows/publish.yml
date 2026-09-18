@@ -91,6 +91,7 @@ jobs:
           fi
           python - <<'PY' >> "$GITHUB_OUTPUT"
           import json
+          import sys
           from datetime import datetime, timezone
           from pathlib import Path
 
@@ -99,13 +100,18 @@ jobs:
           if not value:
               print('due=true')
               raise SystemExit
-          collected = datetime.fromisoformat(value.replace('Z', '+00:00'))
+          try:
+              collected = datetime.fromisoformat(value.replace('Z', '+00:00'))
+          except ValueError:
+              print('due=true')
+              print('Invalid last_success_at in deployed snapshot; running collection.', file=sys.stderr)
+              raise SystemExit
           age_minutes = (datetime.now(timezone.utc) - collected).total_seconds() / 60
           due = age_minutes >= 25
           print(f'due={str(due).lower()}')
           print(f'last_success_age_minutes={age_minutes:.1f}')
           if not due:
-              print('Scheduled check is inside the 25-minute guard window; skipping duplicate publish.')
+              print('Scheduled check is inside the 25-minute guard window; skipping duplicate publish.', file=sys.stderr)
           PY
       - name: Collect, merge and validate
         if: steps.cadence.outputs.due == 'true'
